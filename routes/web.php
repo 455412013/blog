@@ -11,6 +11,23 @@
 |
 */
 
+//\Illuminate\Support\Facades\App::bind("App\Billing\Stripe",function (){
+//   return new App\Billing\Stripe(config('services.stripe.secret'));
+//});
+
+
+//
+//App::instance('App\Billing\Stripe',$stripe);
+//
+//
+//$stripe=\Illuminate\Support\Facades\App::make('App\Billing\Stripe');
+//dd($stripe);
+
+
+//dd(resolve(\App\Billing\Stripe::class));
+
+
+
 Route::get('/','PostsController@index')->name('home');
 Route::get('/','PostsController@index');
 //Route::get('/posts/show','PostsController@show');
@@ -29,3 +46,7 @@ Route::get('/login','SessionController@create')->name('login');
 Route::post('/login','SessionController@store');
 //注销
 Route::get('/logout','SessionController@destroy');
+
+Route::get('sendEmail',function(){
+    \Illuminate\Support\Facades\Mail::to('455412013@qq.com')->send(new \App\Mail\Welcome());
+});
